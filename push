@@ -20,7 +20,7 @@
 
 
 # 某个子模块执行 push
-git submodule foreach sh push ||:
+git submodule foreach sh push ||
 
 git add -A .
 git ci -m "fix"
