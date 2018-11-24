@@ -20,7 +20,7 @@
 # done
 
 
-# 某个子模块执行 push
+# 每个子模块都执行 sh push
 git submodule foreach 'sh push ||:'
 
 git add -A .

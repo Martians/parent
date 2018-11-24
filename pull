@@ -16,5 +16,10 @@
 # done
 
 
-# 会自动也更新parent
-git submodule update --remote --merge
+## 方式1：同时更新parent、submodule；缺点是：没有进度显示
+# git submodule update --remote --merge
+
+## 方式2：
+git submodule foreach "sh pull ||:"
+git fetch origin
+git merge origin/master
