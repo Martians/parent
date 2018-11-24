@@ -21,7 +21,7 @@
 
 
 # 每个子模块都执行 sh push
-git submodule foreach 'sh push ||:'
+git submodule foreach 'sh push; echo ||:'
 
 git add -A .
 git ci -m "fix"
