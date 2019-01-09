@@ -24,5 +24,11 @@ git submodule foreach "sh pull; echo ||:"
 
 echo "update parent:"
 git fetch origin
-git diff master origin/master --quiet || 
+
+if !(git diff master origin/master --quiet); then
 	git merge origin/master
+fi
+
+
+# issue: 更新pull时，无法删除旧的并创建
+# git co origin/master pull push
