@@ -1,36 +1,32 @@
 #!/bin/bash
 
-param=$1
-# 不使用 submodule，调用手动的脚本
-if [[ $# -gt 0 ]]; then
+# param=$1
+# # 不使用 submodule，调用手动的脚本
+# if [[ $# -gt 0 ]]; then
 
-	push() {
-		cd $1
-
-		# 不检查，直接push
-		if [[ $param -eq '1' ]]; then
-			echo "[force pushing $1 ...]"
-			git push origin master:master
-
-		# 检查后，
-		elif git diff origin/master --quiet; then
-			echo "[pushing $1 ...]"
-			sh push
-			
-		else
-			echo "[pass $1]"
-		fi
-		echo
-		cd ..
-	}
-
-	for file in *; do
-		if [ -f $file/push ]; then
-			push $file
-		fi
-	done
-	exit 0
-fi
+# 	push() {
+# 		cd $1
+# 		# 不检查，直接push
+# 		if [[ $param -eq '1' ]]; then
+# 			echo "[force pushing $1 ...]"
+# 			git push origin master:master
+# 		# 检查后，执行push
+# 		elif git diff origin/master --quiet; then
+# 			echo "[pushing $1 ...]"
+# 			sh push
+# 		else
+# 			echo "[pass $1]"
+# 		fi
+# 		echo
+# 		cd ..
+# 	}
+# 	for file in *; do
+# 		if [ -f $file/push ]; then
+# 			push $file
+# 		fi
+# 	done
+# 	exit 0
+# fi
 
 # 每个子模块都执行 sh push
 git submodule foreach 'sh push; echo ||:'
