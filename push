@@ -39,4 +39,6 @@ if !(git diff origin/master --quiet); then
 	git push --recurse-submodules=on-demand
 fi
 
-
+# Todo： 
+# 1. 处于merging状态，将忽略commit
+# 2. 判断push失败，立即退出，获取 stderr、grep
