@@ -1,25 +1,26 @@
 #!/bin/bash
 
-## 不使用 submodule
-# push() {
-# 	cd $1
-# 	if [ "`git st -s`" ]; then
-# 		echo "[pushing $1 ...]"
-# 		sh push
-# 		echo
-# 	else
-# 		echo "[pass $1]"
-# 	fi
-# 	cd ..
-# }
 
-# for file in *; do
-# 	if [ -f $file/push ]; then
-# 		push $file
-# 	fi
-# done
+if [ $1 == '1' ]; then
+	# 不使用 submodule
+	push() {
+		cd $1
+		if [ "`git st -s`" ]; then
+			echo "[pushing $1 ...]"
+			sh push
+			echo
+		else
+			echo "[pass $1]"
+		fi
+		cd ..
+	}
 
-
+	for file in *; do
+		if [ -f $file/push ]; then
+			push $file
+		fi
+	done
+fi
 # 每个子模块都执行 sh push
 git submodule foreach 'sh push; echo ||:'
 
