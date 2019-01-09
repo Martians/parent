@@ -3,8 +3,8 @@
 
 param=$1
 # 不使用 submodule，调用手动的脚本
-if [[ $# -gt 1 ]]; then
-	
+if [[ $# -gt 0 ]]; then
+
 	push() {
 		cd $1
 
