@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 param=$1
 # 不使用 submodule，调用手动的脚本
 if [[ $# -gt 0 ]]; then
@@ -8,17 +7,20 @@ if [[ $# -gt 0 ]]; then
 	push() {
 		cd $1
 
+		# 不检查，直接push
 		if [[ $param -eq '1' ]]; then
 			echo "[force pushing $1 ...]"
 			git push origin master:master
 
-		elif [ "`git st -s`" ]; then
+		# 检查后，
+		elif git diff origin/master --quiet; then
 			echo "[pushing $1 ...]"
 			sh push
-			echo
+			
 		else
 			echo "[pass $1]"
 		fi
+		echo
 		cd ..
 	}
 
@@ -35,5 +37,10 @@ git submodule foreach 'sh push; echo ||:'
 
 echo "update parent:"
 git add -A .
-git diff --cached --quiet || 
+# git diff --cached --quiet || 
+# 	(git ci -m "fix" && git push --recurse-submodules=on-demand)
+
+git diff origin/master --quiet || 
 	(git ci -m "fix" && git push --recurse-submodules=on-demand)
+
+
