@@ -24,5 +24,7 @@ git submodule foreach "sh pull; echo ||:"
 
 echo "update parent:"
 git fetch origin
-git diff master origin/master --quiet || 
+
+if !(git diff master origin/master --quiet); then
 	git merge origin/master
+fi
