@@ -1,11 +1,18 @@
 #!/bin/bash
 
 
-if [[ $1 -eq '1' ]]; then
-	# 不使用 submodule
+param=$1
+# 不使用 submodule，调用手动的脚本
+if [[ $# -gt 1 ]]; then
+	
 	push() {
 		cd $1
-		if [ "`git st -s`" ]; then
+
+		if [[ $param -eq '1' ]]; then
+			echo "[force pushing $1 ...]"
+			git push origin master:master
+
+		elif [ "`git st -s`" ]; then
 			echo "[pushing $1 ...]"
 			sh push
 			echo
@@ -20,7 +27,9 @@ if [[ $1 -eq '1' ]]; then
 			push $file
 		fi
 	done
+	exit 0
 fi
+
 # 每个子模块都执行 sh push
 git submodule foreach 'sh push; echo ||:'
 
