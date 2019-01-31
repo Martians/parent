@@ -13,9 +13,9 @@
 [submodule "project"]
 	path = project
 	url = https://github.com/Martians/project.git
-[submodule "testing"]
-	path = testing
-	url = https://github.com/Martians/testing.git
+[submodule "frame"]
+	path = frame
+	url = https://github.com/Martians/frame.git
 [submodule "work"]
 	path = work
 	url = https://github.com/Martians/work.git
