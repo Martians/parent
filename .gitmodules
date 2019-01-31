@@ -13,9 +13,9 @@
 [submodule "project"]
 	path = project
 	url = https://github.com/Martians/project.git
-[submodule "frame"]
-	path = frame
-	url = https://github.com/Martians/frame.git
 [submodule "work"]
 	path = work
 	url = https://github.com/Martians/work.git
+[submodule "frame"]
+	path = frame
+	url = https://github.com/Martians/frame.git
